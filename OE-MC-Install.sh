@@ -26,125 +26,243 @@ if [ -z "$name" ]; then
     port="Minecraft"
 fi
 
-mkdir ${name}
-cd ${name}
-
 echo "      Veuillez indiquer la version de serveur Minecraft souhaité      "
 echo
-echo " [1.6.4] [1.7.2] [1.7.10] [1.8] [1.8.8] [1.9] [1.9.4] [1.10] [1.10.2] "
-echo "    [1.11] [1.11.2] [1.12] [1.12.2] [1.13] [1.13.2] [1.14] [1.14.3]   "
-echo "    [1.15] [1.15.2] [1.16] [1.16.5] [1.17] [1.17.1] [1.18] [1.18.1]   "
+echo "         [1.6.4] [1.7.2] [1.7.10] [1.8] [1.8.8] [1.9] [1.9.4]         "
+echo "   [1.12] [1.12.2] [1.16] [1.16.5] [1.17] [1.17.1] [1.18] [1.18.1]    "
 echo
 read -p "Version : " version
 echo
-
+echo "        Veuillez indiquer le type de serveur Minecraft souhaité       "
+echo
 
 case $version in
 1.6.4 | 164 )
-    echo "        Veuillez indiquer le type de serveur Minecraft souhaité        "
-    echo
+    version="1.6.4"
     echo "                      [Vanilla] [Bukkit] [Spigot]                      "
     echo
     read -p "Type : " type
     echo
     case $type in
-    Vanilla | vanilla | V | v ) 
-        echo "Démarage de l'installation ... (Serveur Minecraft 1.6.4)" 
-        sleep 2s
-        #apt-get update 
-        #apt-get upgrade -y
-        #apt-get install screen 
-        #apt-get install openjdk-8-jdk 
-        wget https://launcher.mojang.com/mc/game/1.6.4/server/050f93c1f3fe9e2052398f7bd6aca10c63d64a87/server.jar 
-    ;;
-
-    Bukkit | bukkit | B | b ) 
-        echo "Démarage de l'installation ... (Serveur Minecraft 1.6.4)" 
-        sleep 2s
-        #apt-get update 
-        #apt-get upgrade -y
-        #apt-get install screen 
-        #apt-get install openjdk-8-jdk 
-        wget https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.6.4-R2.0.jar 
-    ;;
-
-    Spigot | spigot | S | s ) 
-        echo "Démarage de l'installation ... (Serveur Minecraft 1.6.4)" 
-        sleep 2s
-        #apt-get update 
-        #apt-get upgrade -y
-        #apt-get install screen 
-        #apt-get install openjdk-8-jdk 
-        wget https://cdn.getbukkit.org/spigot/spigot-1.6.4-R2.1-SNAPSHOT.jar 
-    ;;
-    *) echo "ERREUR - ";;
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.6.4/server/050f93c1f3fe9e2052398f7bd6aca10c63d64a87/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.6.4-R2.0.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.6.4-R2.1-SNAPSHOT.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
     esac
-    echo "screen -dmS ${name} java -jar server.jar" > start.sh 
-    echo "eula=true" > eula.txt 
+ 
 ;;
 
-1.7.2 | 172) 
-    echo "        Veuillez indiquer le type de serveur Minecraft souhaité        "
-    echo
+1.7.2 | 172)
+    version="1.7.2"
     echo "                      [Vanilla] [Bukkit] [Spigot]                      "
     echo
     read -p "Type : " type
     echo
     case $type in
-    Vanilla | vanilla | V | v ) 
-        echo "Démarage de l'installation ... (Serveur Minecraft 1.7.2)" 
-        sleep 2s
-        #apt-get update 
-        #apt-get upgrade -y
-        #apt-get install screen 
-        #apt-get install openjdk-8-jdk 
-        wget https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar
-    ;;
-
-    Bukkit | bukkit | B | b ) 
-        echo "Démarage de l'installation ... (Serveur Minecraft 1.7.2)" 
-        sleep 2s
-        #apt-get update 
-        #apt-get upgrade -y
-        #apt-get install screen 
-        #apt-get install openjdk-8-jdk 
-        wget https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.2-R0.4-20140216.012104-3.jar
-    ;;
-
-    Spigot | spigot | S | s ) 
-        echo "Démarage de l'installation ... (Serveur Minecraft 1.7.2)" 
-        sleep 2s
-        #apt-get update 
-        #apt-get upgrade -y
-        #apt-get install screen 
-        #apt-get install openjdk-8-jdk 
-        wget https://cdn.getbukkit.org/spigot/spigot-1.7.2-R0.4-SNAPSHOT-1339.jar
-    ;;
-    *) echo "ERREUR - ";;
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.2-R0.4-20140216.012104-3.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.2-R0.4-SNAPSHOT-1339.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
     esac
-    echo "screen -dmS ${name} java -jar server.jar" > start.sh 
-    echo "eula=true" > eula.txt 
 ;;
 
-1.7.10) echo " ----- MENU 3 -----
-    <1>  menu 3.1
-    <2>  menu 3.2
-    <3>  menu 3.3
-    <4>  Q = Quitter
-    "
-    read choix_menu_3
+1.7.10 | 1710)
+    version="1.7.10"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
     echo
-    case $choix_menu_3 in
-    1) echo "vous avez selectionné le menu: 3.1" ;;
-    2) echo "vous avez selectionné le menu: 3.2" ;;
-    3) echo "vous avez selectionné le menu: 3.3" ;;
-    4 | Q | q ) echo "L'utilisateur $USER à quitter le programme" ; echo ; exit 0 ;;
-    *) echo "Erreur saisi Menu 3";;
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.8 | 18)
+    version="1.8"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.8.8 | 188)
+    version="1.8.8"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.9 | 19)
+    version="1.9"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.9.4 | 194)
+    version="1.9.4"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.12 | 112)
+    version="1.12"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.12.2 | 1122)
+    version="1.12.2"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.16 | 116)
+    version="1.16"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.16.5 | 1165)
+    version="1.16.5"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.17 | 117)
+    version="1.17"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.17.1 | 1171)
+    version="1.17.1"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.18 | 118)
+    version="1.18"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
+    esac
+;;
+
+1.18.1 | 1181)
+    version="1.18.1"
+    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+    echo
+    read -p "Type : " type
+    echo
+    case $type in
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
     esac
 ;;
 
 5 | Q | q ) echo "L'utilisateur $USER à quitter le programme" ; echo ; exit 0 ;;
-*) echo "Erreur saisi menu principal";;
+*) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
 esac
+
 echo
+echo "Démarage de l'installation ... (Serveur Minecraft ${type} ${version})" 
+    mkdir ${name}
+    cd ${name}
+    sleep 2s
+    #apt-get update 
+    #apt-get upgrade -y
+    #apt-get install screen 
+    #apt-get install openjdk-8-jdk 
+    wget -O ${type}-${version}.jar https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar
+echo "screen -dmS ${name} java -jar ${type}-${version}.jar" > start.sh 
+echo "eula=true" > eula.txt
+
 exit 0
