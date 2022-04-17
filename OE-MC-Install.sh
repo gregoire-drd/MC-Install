@@ -29,7 +29,7 @@ fi
 echo "      Veuillez indiquer la version de serveur Minecraft souhaité      "
 echo
 echo "         [1.6.4] [1.7.2] [1.7.10] [1.8] [1.8.8] [1.9] [1.9.4]         "
-echo "   [1.12] [1.12.2] [1.16] [1.16.5] [1.17] [1.17.1] [1.18] [1.18.1]    "
+echo "   [1.12] [1.12.2] [1.16] [1.16.5] [1.17] [1.17.1] [1.18] [1.18.2]    "
 echo
 read -p "Version : " version
 echo
