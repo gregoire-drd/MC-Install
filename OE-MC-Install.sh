@@ -259,7 +259,7 @@ echo "Démarage de l'installation ... (Serveur Minecraft ${type} ${version})"
     sleep 2s
     #apt-get update 
     #apt-get upgrade -y
-    #apt-get install screen 
+    apt-get install screen 
     #apt-get install openjdk-8-jdk 
     wget -O ${type}-${version}.jar ${server_jar}
 echo "screen -dmS ${name} java -jar ${type}-${version}.jar" > start.sh 
