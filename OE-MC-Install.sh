@@ -261,7 +261,7 @@ echo "Démarage de l'installation ... (Serveur Minecraft ${type} ${version})"
     #apt-get upgrade -y
     #apt-get install screen 
     #apt-get install openjdk-8-jdk 
-    wget -O ${type}-${version}.jar https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar
+    wget -O ${type}-${version}.jar ${server_jar}
 echo "screen -dmS ${name} java -jar ${type}-${version}.jar" > start.sh 
 echo "eula=true" > eula.txt
 
