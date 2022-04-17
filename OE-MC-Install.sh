@@ -227,23 +227,24 @@ case $version in
     read -p "Type : " type
     echo
     case $type in
-    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/v1/objects/3cf24a8694aca6267883b17d934efacc5e44440d/server.jar";;
     Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
     Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
     *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
     esac
 ;;
 
-1.18.1 | 1181)
-    version="1.18.1"
-    echo "                      [Vanilla] [Bukkit] [Spigot]                      "
+1.18.2 | 1182)
+    version="1.18.2"
+    echo "                  [Vanilla] [Bukkit] [Spigot] [Paper]                  "
     echo
     read -p "Type : " type
     echo
     case $type in
-    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/mc/game/1.7.2/server/3716cac82982e7c2eb09f83028b555e9ea606002/server.jar";;
-    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.7.10-R0.1-20140808.005431-8.jar";;
-    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://cdn.getbukkit.org/spigot/spigot-1.7.10-SNAPSHOT-b1657.jar";;
+    Vanilla | vanilla | V | v ) type="vanilla" ; server_jar="https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar";;
+    Bukkit | bukkit | B | b ) type="bukkit" ; server_jar="https://download.getbukkit.org/craftbukkit/craftbukkit-1.18.2.jar";;
+    Spigot | spigot | S | s ) type="spigot" ; server_jar="https://download.getbukkit.org/spigot/spigot-1.18.2.jar";;
+    Paper | paper | P | p ) type="paper" ; server_jar="https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/290/downloads/paper-1.18.2-290.jar";;
     *) echo "ERREUR - Invalid input" ; echo ; exit 0 ;;
     esac
 ;;
