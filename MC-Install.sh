@@ -23,7 +23,7 @@ echo
 
 # Set name if it wasn't set
 if [ -z "$name" ]; then
-    port="Minecraft"
+    name="Minecraft"
 fi
 
 echo "      Veuillez indiquer la version de serveur Minecraft souhaité      "
